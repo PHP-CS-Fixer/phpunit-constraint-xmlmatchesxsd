@@ -10,7 +10,7 @@
     "localheinz/composer-normalize": "^0.6.0",
     "maglnet/composer-require-checker": "^0.1.6",
     "mi-schi/phpmd-extension": "^4.2.1",
-    "phpmd/phpmd": "^2.6.0",
+    "phpmd/phpmd": "^2.6.0"
   },
   "config": {
     "optimize-autoloader": true,
