@@ -10,7 +10,6 @@ cache:
 language: php
 
 php:
-    - 5.5
     - 5.6
     - 7.0
     - 7.1
@@ -35,6 +34,7 @@ before_install:
 
 install:
     - composer update $DEFAULT_COMPOSER_FLAGS $COMPOSER_FLAGS
+    - composer info -D | sort
 
 script:
     - vendor/bin/phpunit
@@ -44,8 +44,11 @@ jobs:
         -
             stage: Static Code Analysis
             php: 7.2
+            install:
+                - travis_retry composer update -d dev-tools $DEFAULT_COMPOSER_FLAGS
+                - composer info -d dev-tools -D | sort
             script:
                 - composer validate --strict || travis_terminate 1
-                - composer normalize --dry-run || travis_terminate 1
-                - vendor/bin/phpmd src,tests text phpmd.xml || travis_terminate 1
-                - vendor/bin/php-cs-fixer fix --diff --dry-run -v || travis_terminate 1
+                - composer normalize -d ./dev-tools ./../composer.json --dry-run || travis_terminate 1
+                - dev-tools/vendor/bin/phpmd src,tests text phpmd.xml || travis_terminate 1
+                - dev-tools/vendor/bin/php-cs-fixer fix --diff --dry-run -v || travis_terminate 1
