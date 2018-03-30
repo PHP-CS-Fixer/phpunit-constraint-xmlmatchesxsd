@@ -5,11 +5,11 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Dariusz Rumiński",
-      "email": "dariusz.ruminski@gmail.com"
+      "name": "SpacePossum"
     },
     {
-      "name": "SpacePossum"
+      "name": "Dariusz Rumiński",
+      "email": "dariusz.ruminski@gmail.com"
     }
   ],
   "require": {

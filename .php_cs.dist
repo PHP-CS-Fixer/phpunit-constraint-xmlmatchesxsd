@@ -1,9 +1,9 @@
 <?php
 
 $header = <<<'EOF'
-This file is part of PHP CS Fixer.
+This file is part of PHP CS Fixer / PHPUnit Constraint XmlMatchesXsd.
 
-(c) Fabien Potencier <fabien@symfony.com>
+(c) SpacePossum
     Dariusz Rumiński <dariusz.ruminski@gmail.com>
 
 This source file is subject to the MIT license that is bundled
