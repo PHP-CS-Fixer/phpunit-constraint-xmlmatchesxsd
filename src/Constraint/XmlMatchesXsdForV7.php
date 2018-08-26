@@ -41,7 +41,7 @@ final class XmlMatchesXsdForV7 extends Constraint
         // replace first only
         $needle = 'http://www.w3.org/2001/xml.xsd';
         if (false !== $pos = strpos($xsd, $needle)) {
-            $xsd = substr_replace($xsd, 'file:///'.str_replace('\\', '/', __DIR__).'/xml.xsd', $pos, strlen($needle));
+            $xsd = substr_replace($xsd, 'file:///'.str_replace('\\', '/', __DIR__).'/xml.xsd', $pos, \strlen($needle));
         }
 
         $this->xsd = $xsd;
@@ -60,16 +60,16 @@ final class XmlMatchesXsdForV7 extends Constraint
      */
     protected function failureDescription($other): string
     {
-        if (is_string($other)) {
+        if (\is_string($other)) {
             return sprintf("%s %s.\n%s", $other, $this->toString(), implode("\n", $this->xmlConstraintErrors));
         }
 
-        if (is_object($other)) {
-            $type = sprintf('%s#%s', get_class($other), method_exists($other, '__toString') ? $other->__toString() : '');
+        if (\is_object($other)) {
+            $type = sprintf('%s#%s', \get_class($other), method_exists($other, '__toString') ? $other->__toString() : '');
         } elseif (null === $other) {
             $type = 'null';
         } else {
-            $type = gettype($other).'#'.$other;
+            $type = \gettype($other).'#'.$other;
         }
 
         return $type.' '.$this->toString();
@@ -80,7 +80,7 @@ final class XmlMatchesXsdForV7 extends Constraint
      */
     protected function matches($other): bool
     {
-        return is_string($other)
+        return \is_string($other)
             ? $this->stringMatches($other)
             : false
         ;
@@ -101,7 +101,7 @@ final class XmlMatchesXsdForV7 extends Constraint
         $dom->preserveWhiteSpace = false;
         $dom->validateOnParse = true;
 
-        if (!@$dom->loadXML($other, LIBXML_NONET | (defined('LIBXML_COMPACT') ? LIBXML_COMPACT : 0))) {
+        if (!@$dom->loadXML($other, LIBXML_NONET | (\defined('LIBXML_COMPACT') ? LIBXML_COMPACT : 0))) {
             libxml_disable_entity_loader($disableEntities);
             $this->setXMLConstraintErrors();
             libxml_clear_errors();
