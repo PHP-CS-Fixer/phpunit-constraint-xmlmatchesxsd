@@ -1,44 +1,44 @@
 {
-  "name": "php-cs-fixer/phpunit-constraint-xmlmatchesxsd",
-  "type": "library",
-  "description": "Constraint for testing XML against XSD.",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "SpacePossum"
+    "name": "php-cs-fixer/phpunit-constraint-xmlmatchesxsd",
+    "type": "library",
+    "description": "Constraint for testing XML against XSD.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SpacePossum"
+        },
+        {
+            "name": "Dariusz Rumiński",
+            "email": "dariusz.ruminski@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.5 || ^7.0",
+        "phpunit/phpunit": "^5.7.23 || ^6.4.3 || ^7.0 || ^8.0",
+        "phpunitgoodpractices/polyfill": "^1.1"
     },
-    {
-      "name": "Dariusz Rumiński",
-      "email": "dariusz.ruminski@gmail.com"
-    }
-  ],
-  "require": {
-    "php": "^5.5 || ^7.0",
-    "phpunit/phpunit": "^5.7.23 || ^6.4.3 || ^7.0 || ^8.0",
-    "phpunitgoodpractices/polyfill": "^1.1"
-  },
-  "conflict": {
-    "hhvm": "*"
-  },
-  "require-dev": {
-    "johnkary/phpunit-speedtrap": "^1.1 || ^2.0 || ^3.0",
-    "symfony/phpunit-bridge": "^3.2.2 || ^4.0"
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true
-  },
-  "autoload": {
-    "psr-4": {
-      "PhpCsFixer\\PhpunitConstraintXmlMatchesXsd\\": "src/"
+    "conflict": {
+        "hhvm": "*"
     },
-    "files": [
-      "src/Constraint/XmlMatchesXsd.php"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "PhpCsFixer\\PhpunitConstraintXmlMatchesXsd\\Tests\\": "tests/"
+    "require-dev": {
+        "johnkary/phpunit-speedtrap": "^1.1 || ^2.0 || ^3.0",
+        "symfony/phpunit-bridge": "^3.2.2 || ^4.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpCsFixer\\PhpunitConstraintXmlMatchesXsd\\": "src/"
+        },
+        "files": [
+            "src/Constraint/XmlMatchesXsd.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpCsFixer\\PhpunitConstraintXmlMatchesXsd\\Tests\\": "tests/"
+        }
     }
-  }
 }

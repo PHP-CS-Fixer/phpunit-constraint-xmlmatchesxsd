@@ -23,7 +23,7 @@ env:
         - COMPOSER_FLAGS=""
 
 stages:
-    - Static Code Analysis
+    - Static code analysis
     - Test
 
 before_install:
@@ -43,8 +43,8 @@ script:
 jobs:
     include:
         -
-            stage: Static Code Analysis
-            php: 7.2
+            stage: Static code analysis
+            php: 7.3
             install:
                 - travis_retry composer update -d dev-tools $DEFAULT_COMPOSER_FLAGS
                 - composer info -d dev-tools -D | sort
