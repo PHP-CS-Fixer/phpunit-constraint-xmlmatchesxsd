@@ -1,0 +1,9 @@
+{
+    "symbol-whitelist": [
+        "PhpCsFixer\\PhpunitConstraintXmlMatchesXsd\\Constraint\\XmlMatchesXsd",
+
+        "null", "true", "false",
+        "static", "self", "parent",
+        "array", "string", "int", "float", "bool", "iterable", "callable", "void"
+    ]
+}
