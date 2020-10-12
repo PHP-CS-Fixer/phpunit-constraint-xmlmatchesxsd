@@ -94,7 +94,6 @@ final class XmlMatchesXsdForV7 extends Constraint
     private function stringMatches($other)
     {
         $internalErrors = libxml_use_internal_errors(true);
-        $disableEntities = libxml_disable_entity_loader(true);
         libxml_clear_errors();
 
         $dom = new \DOMDocument();
@@ -102,7 +101,6 @@ final class XmlMatchesXsdForV7 extends Constraint
         $dom->validateOnParse = true;
 
         if (!@$dom->loadXML($other, LIBXML_NONET | (\defined('LIBXML_COMPACT') ? LIBXML_COMPACT : 0))) {
-            libxml_disable_entity_loader($disableEntities);
             $this->setXMLConstraintErrors();
             libxml_clear_errors();
             libxml_use_internal_errors($internalErrors);
@@ -112,7 +110,6 @@ final class XmlMatchesXsdForV7 extends Constraint
 
         $dom->normalizeDocument();
 
-        libxml_disable_entity_loader($disableEntities);
         libxml_clear_errors();
 
         if (false === $result = @$dom->schemaValidateSource($this->xsd)) {
