@@ -39,14 +39,14 @@ final class XmlMatchesXsdTest extends TestCase
         }
 
         $constraint->evaluate($content); // should not throw an exception
-        $this->assertTrue($constraint->evaluate($content, '', true));
+        static::assertTrue($constraint->evaluate($content, '', true));
     }
 
     public function testXMLValidConstraintBasics()
     {
         $constraint = new XmlMatchesXsd('');
-        $this->assertSame(1, $constraint->count());
-        $this->assertSame('matches XSD', $constraint->toString());
+        static::assertSame(1, $constraint->count());
+        static::assertSame('matches XSD', $constraint->toString());
     }
 
     public function testXMLValidConstraintFalse()
@@ -54,7 +54,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that boolean\# matches XSD\.$#'
         );
 
@@ -67,7 +67,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that integer\#1 matches XSD\.$#'
         );
 
@@ -80,7 +80,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that <a></b> matches XSD.[\n]\[error \d{1,}\](?s).*\.$#'
         );
 
@@ -93,7 +93,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that <a></a> matches XSD.[\n]\[error \d{1,}\](?s).*\.$#'
         );
 
@@ -106,7 +106,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that null matches XSD\.$#'
         );
 
@@ -119,7 +119,7 @@ final class XmlMatchesXsdTest extends TestCase
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
         );
-        $this->expectExceptionMessageRegExp(
+        $this->expectExceptionMessageRegex(
             '#^Failed asserting that stdClass\# matches XSD\.$#'
         );
 
@@ -141,5 +141,19 @@ final class XmlMatchesXsdTest extends TestCase
     private function getAssetsDir()
     {
         return __DIR__.'/../Fixtures/XmlMatchesXsdTest/';
+    }
+
+    /**
+     * @param string $pattern
+     */
+    private function expectExceptionMessageRegex($pattern)
+    {
+        if (method_exists($this, 'expectExceptionMessageRegExp')) {
+            $this->expectExceptionMessageRegExp($pattern);
+        } elseif (method_exists($this, 'expectDeprecationMessageMatches')) {
+            $this->expectDeprecationMessageMatches($pattern);
+        } else {
+            throw new \RuntimeException('Unknown how to match against exception message.');
+        }
     }
 }
