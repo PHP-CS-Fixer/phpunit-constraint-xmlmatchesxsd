@@ -18,9 +18,6 @@
         "ext-libxml": "*",
         "phpunit/phpunit": "^5.7.23 || ^6.4.3 || ^7.0 || ^8.0 || ^9.0"
     },
-    "conflict": {
-        "hhvm": "*"
-    },
     "require-dev": {
         "johnkary/phpunit-speedtrap": "^1.1 || ^2.0 || ^3.0",
         "symfony/phpunit-bridge": "^3.2.2 || ^4.0"
