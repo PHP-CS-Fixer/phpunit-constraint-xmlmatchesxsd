@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  analyse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+          tools: composer:v1
+      - run: composer global require hirak/prestissimo
+      - run: composer update --no-progress
+      - run: composer update --no-progress --working-dir=dev-tools
+      - run: composer info --direct --working-dir=dev-tools | sort
+      - run: composer validate --strict
+      - run: composer normalize --working-dir=dev-tools ../composer.json --dry-run
+      - run: dev-tools/vendor/bin/phpmd src,tests text dev-tools/phpmd.xml
+      - run: dev-tools/vendor/bin/php-cs-fixer fix --diff --dry-run -v
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php-version: '5.6'
+            composer-flags: '--prefer-stable --prefer-lowest'
+          - php-version: '7.0'
+          - php-version: '7.1'
+          - php-version: '7.2'
+          - php-version: '7.3'
+          - php-version: '7.4'
+          - php-version: '8.0'
+          - php-version: '8.1'
+          - php-version: '8.2'
+          - php-version: '8.3'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+      - run: composer update --no-progress ${{ matrix.composer-flags }}
+      - run: vendor/bin/phpunit
