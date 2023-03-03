@@ -15,13 +15,13 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
 ;
 
-return (new PhpCsFixer\Config)
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PhpCsFixer'               => true,
-        '@PhpCsFixer:risky'         => true,
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
         '@PHPUnit60Migration:risky' => true,
-        'header_comment'            => ['header' => $header],
+        'header_comment' => ['header' => $header],
     ])
     ->setFinder($finder)
 ;
