@@ -15,20 +15,13 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
 ;
 
-if (PHP_VERSION_ID < 70000) {
-    $finder
-        ->notPath('tests/Test/Constraint/XmlMatchesXsdForV7.php')
-    ;
-}
-
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config)
     ->setRiskyAllowed(true)
     ->setRules([
-        '@PhpCsFixer' => true,
-        '@PhpCsFixer:risky' => true,
-        '@PHP56Migration:risky' => true,
+        '@PhpCsFixer'               => true,
+        '@PhpCsFixer:risky'         => true,
         '@PHPUnit60Migration:risky' => true,
-        'header_comment' => ['header' => $header],
+        'header_comment'            => ['header' => $header],
     ])
     ->setFinder($finder)
 ;
