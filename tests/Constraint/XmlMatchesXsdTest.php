@@ -150,6 +150,8 @@ final class XmlMatchesXsdTest extends TestCase
     {
         if (method_exists($this, 'expectExceptionMessageRegExp')) {
             $this->expectExceptionMessageRegExp($pattern);
+        } elseif (method_exists($this, 'expectExceptionMessageMatches')) {
+            $this->expectExceptionMessageMatches($pattern);
         } elseif (method_exists($this, 'expectDeprecationMessageMatches')) {
             $this->expectDeprecationMessageMatches($pattern);
         } else {
