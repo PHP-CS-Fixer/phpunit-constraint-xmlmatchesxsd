@@ -39,14 +39,14 @@ final class XmlMatchesXsdTest extends TestCase
         }
 
         $constraint->evaluate($content); // should not throw an exception
-        static::assertTrue($constraint->evaluate($content, '', true));
+        self::assertTrue($constraint->evaluate($content, '', true));
     }
 
     public function testXMLValidConstraintBasics()
     {
         $constraint = new XmlMatchesXsd('');
-        static::assertSame(1, $constraint->count());
-        static::assertSame('matches XSD', $constraint->toString());
+        self::assertSame(1, $constraint->count());
+        self::assertSame('matches XSD', $constraint->toString());
     }
 
     public function testXMLValidConstraintFalse()
