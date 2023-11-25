@@ -45,17 +45,11 @@ final class XmlMatchesXsdForV8 extends Constraint
         $this->xsd = $xsd;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toString(): string
     {
         return 'matches XSD';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function failureDescription($other): string
     {
         if (\is_string($other)) {
@@ -73,15 +67,11 @@ final class XmlMatchesXsdForV8 extends Constraint
         return $type.' '.$this->toString();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function matches($other): bool
     {
         return \is_string($other)
             ? $this->stringMatches($other)
-            : false
-        ;
+            : false;
     }
 
     /**
