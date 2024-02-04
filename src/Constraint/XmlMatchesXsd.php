@@ -12,9 +12,11 @@
 
 namespace PhpCsFixer\PhpunitConstraintXmlMatchesXsd\Constraint;
 
-if (version_compare(\PHPUnit\Runner\Version::id(), '7.0.0') < 0) {
+use PHPUnit\Runner\Version;
+
+if (version_compare(Version::id(), '7.0.0') < 0) {
     class_alias(XmlMatchesXsdForV5::class, XmlMatchesXsd::class);
-} elseif (version_compare(\PHPUnit\Runner\Version::id(), '8.0.0') < 0) {
+} elseif (version_compare(Version::id(), '8.0.0') < 0) {
     class_alias(XmlMatchesXsdForV7::class, XmlMatchesXsd::class);
 } else {
     class_alias(XmlMatchesXsdForV8::class, XmlMatchesXsd::class);
