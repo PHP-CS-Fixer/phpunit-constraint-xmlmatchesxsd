@@ -31,7 +31,7 @@ final class XmlMatchesXsdTest extends TestCase
         if (false === $content) {
             $error = error_get_last();
 
-            throw new \RuntimeException(sprintf(
+            throw new \RuntimeException(\sprintf(
                 'Failed to read content of the sample file "%s".%s',
                 $content,
                 $error ? ' '.$error['message'] : ''

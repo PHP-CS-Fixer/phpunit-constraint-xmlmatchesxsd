@@ -6,8 +6,8 @@
         "ergebnis/composer-normalize": "*",
         "maglnet/composer-require-checker": "^3.8",
         "mi-schi/phpmd-extension": "^4.3",
-        "php-cs-fixer/shim": "^3.49.0",
-        "phpmd/phpmd": "^2.13"
+        "php-cs-fixer/shim": "^3.68.5",
+        "phpmd/phpmd": "^2.15"
     },
     "config": {
         "allow-plugins": {

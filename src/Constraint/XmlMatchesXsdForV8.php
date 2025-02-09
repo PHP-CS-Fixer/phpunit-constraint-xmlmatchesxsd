@@ -53,11 +53,11 @@ final class XmlMatchesXsdForV8 extends Constraint
     protected function failureDescription($other): string
     {
         if (\is_string($other)) {
-            return sprintf("%s %s.\n%s", $other, $this->toString(), implode("\n", $this->xmlConstraintErrors));
+            return \sprintf("%s %s.\n%s", $other, $this->toString(), implode("\n", $this->xmlConstraintErrors));
         }
 
         if (\is_object($other)) {
-            $type = sprintf('%s#%s', \get_class($other), method_exists($other, '__toString') ? $other->__toString() : '');
+            $type = \sprintf('%s#%s', \get_class($other), method_exists($other, '__toString') ? $other->__toString() : '');
         } elseif (null === $other) {
             $type = 'null';
         } else {
@@ -123,7 +123,7 @@ final class XmlMatchesXsdForV8 extends Constraint
                 $level = '';
             }
 
-            $this->xmlConstraintErrors[] = sprintf('[%s%s] %s (line %d, column %d).', $level, $error->code, trim($error->message), $error->line, $error->column);
+            $this->xmlConstraintErrors[] = \sprintf('[%s%s] %s (line %d, column %d).', $level, $error->code, trim($error->message), $error->line, $error->column);
         }
     }
 }
