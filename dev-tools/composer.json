@@ -1,12 +1,12 @@
 {
     "require": {
-        "php": "^8.1"
+        "php": "^8.5"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "*",
-        "maglnet/composer-require-checker": "^3.8",
+        "ergebnis/composer-normalize": "^2.50",
+        "maglnet/composer-require-checker": "^4.21",
         "mi-schi/phpmd-extension": "^4.3",
-        "php-cs-fixer/shim": "^3.68.5",
+        "php-cs-fixer/shim": "^3.94.2",
         "phpmd/phpmd": "^2.15"
     },
     "config": {

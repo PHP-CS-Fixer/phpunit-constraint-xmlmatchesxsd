@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of PHP CS Fixer / PHPUnit Constraint XmlMatchesXsd.
  *
@@ -11,7 +13,5 @@
  */
 
 namespace PhpCsFixer\PhpunitConstraintXmlMatchesXsd\Constraint;
-
-use PHPUnit\Runner\Version;
 
 class_alias(XmlMatchesXsdForV9::class, XmlMatchesXsd::class);
