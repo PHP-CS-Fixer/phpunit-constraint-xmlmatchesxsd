@@ -14,4 +14,4 @@ declare(strict_types=1);
 
 namespace PhpCsFixer\PhpunitConstraintXmlMatchesXsd\Constraint;
 
-class_alias(XmlMatchesXsdForV11::class, XmlMatchesXsd::class);
+class_alias(XmlMatchesXsdForV9::class, XmlMatchesXsd::class);

@@ -21,7 +21,7 @@ use PHPUnit\Framework\Constraint\Constraint;
  *
  * @internal
  */
-final class XmlMatchesXsdForV8 extends Constraint
+final class XmlMatchesXsdForV9 extends Constraint
 {
     /**
      * @var string[]

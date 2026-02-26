@@ -8,10 +8,10 @@ jobs:
   analyse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.5'
           coverage: none
       - run: composer update --no-progress
       - run: composer update --no-progress --working-dir=dev-tools
@@ -28,12 +28,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - php-version: '7.0'
-            composer-flags: '--prefer-stable --prefer-lowest'
-          - php-version: '7.1'
-          - php-version: '7.2'
-          - php-version: '7.3'
           - php-version: '7.4'
+            composer-flags: '--prefer-stable --prefer-lowest'
           - php-version: '8.0'
           - php-version: '8.1'
           - php-version: '8.2'
@@ -41,7 +37,7 @@ jobs:
           - php-version: '8.4'
           - php-version: '8.5'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
