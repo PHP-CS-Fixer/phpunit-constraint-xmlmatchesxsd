@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of PHP CS Fixer / PHPUnit Constraint XmlMatchesXsd.
  *
@@ -22,7 +24,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class XmlMatchesXsdTest extends TestCase
 {
-    public function testAssertXMLMatchesXSD()
+    public function testAssertXMLMatchesXSD(): void
     {
         $constraint = new XmlMatchesXsd($this->getXSD());
         $sampleFile = $this->getAssetsDir().'xliff_sample.xml';
@@ -42,14 +44,14 @@ final class XmlMatchesXsdTest extends TestCase
         self::assertTrue($constraint->evaluate($content, '', true));
     }
 
-    public function testXMLValidConstraintBasics()
+    public function testXMLValidConstraintBasics(): void
     {
         $constraint = new XmlMatchesXsd('');
         self::assertSame(1, $constraint->count());
         self::assertSame('matches XSD', $constraint->toString());
     }
 
-    public function testXMLValidConstraintFalse()
+    public function testXMLValidConstraintFalse(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -62,7 +64,7 @@ final class XmlMatchesXsdTest extends TestCase
         $constraint->evaluate(false);
     }
 
-    public function testXMLValidConstraintInt()
+    public function testXMLValidConstraintInt(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -75,7 +77,7 @@ final class XmlMatchesXsdTest extends TestCase
         $constraint->evaluate(1);
     }
 
-    public function testXMLValidConstraintInvalidXML()
+    public function testXMLValidConstraintInvalidXML(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -88,7 +90,7 @@ final class XmlMatchesXsdTest extends TestCase
         $constraint->evaluate('<a></b>');
     }
 
-    public function testXMLValidConstraintNotMatchingXML()
+    public function testXMLValidConstraintNotMatchingXML(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -101,7 +103,7 @@ final class XmlMatchesXsdTest extends TestCase
         $constraint->evaluate('<a></a>');
     }
 
-    public function testXMLValidConstraintNull()
+    public function testXMLValidConstraintNull(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -114,7 +116,7 @@ final class XmlMatchesXsdTest extends TestCase
         $constraint->evaluate(null);
     }
 
-    public function testXMLValidConstraintObject()
+    public function testXMLValidConstraintObject(): void
     {
         $this->expectException(
             'PHPUnit\Framework\ExpectationFailedException'
@@ -146,10 +148,10 @@ final class XmlMatchesXsdTest extends TestCase
     /**
      * @param string $pattern
      */
-    private function expectExceptionMessageRegex($pattern)
+    private function expectExceptionMessageRegex($pattern): void
     {
         if (method_exists($this, 'expectExceptionMessageRegExp')) {
-            $this->expectExceptionMessageRegExp($pattern);
+            $this->expectExceptionMessageMatches($pattern);
         } elseif (method_exists($this, 'expectExceptionMessageMatches')) {
             $this->expectExceptionMessageMatches($pattern);
         } elseif (method_exists($this, 'expectDeprecationMessageMatches')) {

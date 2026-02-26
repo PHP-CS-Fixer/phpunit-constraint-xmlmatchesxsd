@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of PHP CS Fixer / PHPUnit Constraint XmlMatchesXsd.
  *
@@ -110,7 +112,7 @@ final class XmlMatchesXsdForV8 extends Constraint
         return $result;
     }
 
-    private function setXMLConstraintErrors()
+    private function setXMLConstraintErrors(): void
     {
         foreach (libxml_get_errors() as $error) {
             if (LIBXML_ERR_WARNING === $error->level) {
