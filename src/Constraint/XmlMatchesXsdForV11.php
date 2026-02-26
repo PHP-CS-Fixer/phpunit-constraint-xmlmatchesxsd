@@ -19,7 +19,7 @@ use PHPUnit\Framework\Constraint\Constraint;
  *
  * @internal
  */
-final class XmlMatchesXsdForV7 extends Constraint
+final class XmlMatchesXsdForV11 extends Constraint
 {
     /**
      * @var string[]
@@ -36,8 +36,6 @@ final class XmlMatchesXsdForV7 extends Constraint
      */
     public function __construct($xsd)
     {
-        parent::__construct();
-
         // replace first only
         $needle = 'http://www.w3.org/2001/xml.xsd';
         if (false !== $pos = strpos($xsd, $needle)) {
