@@ -14,4 +14,4 @@ namespace PhpCsFixer\PhpunitConstraintXmlMatchesXsd\Constraint;
 
 use PHPUnit\Runner\Version;
 
-class_alias(XmlMatchesXsdForV11::class, XmlMatchesXsd::class);
+class_alias(XmlMatchesXsdForV9::class, XmlMatchesXsd::class);
